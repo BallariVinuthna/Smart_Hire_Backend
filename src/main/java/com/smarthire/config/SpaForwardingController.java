@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SpaForwardingController {
 
-    @GetMapping(value = "/{path:^(?!api|h2-console|health|actuator|error)[^\\.]*}")
-    public String redirectRootPaths() {
-        return "forward:/index.html";
-    }
-
-    @GetMapping(value = "/{path:^(?!api|h2-console|health|error).*$}/**/{subpath:[^\\.]*}")
-    public String redirectSubPaths() {
+    @GetMapping(value = {
+        "/{path:^(?!api|h2-console|health|actuator|error)[^\\.]*}",
+        "/{path1:^(?!api|h2-console|health|actuator|error)[^\\.]*}/{path2:[^\\.]*}",
+        "/{path1:^(?!api|h2-console|health|actuator|error)[^\\.]*}/{path2:[^\\.]*}/{path3:[^\\.]*}"
+    })
+    public String redirectSpaPaths() {
         return "forward:/index.html";
     }
 }
