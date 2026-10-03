@@ -113,10 +113,12 @@ public class SecurityConfig {
             configuration.setAllowedOrigins(origins);
         } else {
             configuration.setAllowedOriginPatterns(List.of(
-                    "http://localhost:5173",
-                    "http://localhost:3000",
-                    "http://localhost:8080",
-                    "https://*.onrender.com"
+                    "http://localhost:*",
+                    "http://127.0.0.1:*",
+                    "http://0.0.0.0:*",
+                    "https://*.onrender.com",
+                    "https://*.vercel.app",
+                    "*"
             ));
         }
 

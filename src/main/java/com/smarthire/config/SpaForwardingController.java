@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SpaForwardingController {
 
-    @GetMapping(value = "/{path:[^\\.]*}")
+    @GetMapping(value = "/{path:^(?!api|h2-console|health|actuator|error)[^\\.]*}")
     public String redirectRootPaths() {
         return "forward:/index.html";
     }
