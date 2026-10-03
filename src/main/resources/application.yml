@@ -37,5 +37,5 @@ smarthire:
     client-secret: ${GITHUB_CLIENT_SECRET:sampleClientSecretKey}
     callback-url: ${GITHUB_CALLBACK_URL:http://localhost:5173/student/github}
   ai:
-    provider: ${AI_PROVIDER:heuristic} # heuristic, openai, or gemini
-    api-key: ${AI_API_KEY:}
+    provider: ${AI_PROVIDER:gemini} # heuristic, openai, or gemini
+    api-key: ${AI_API_KEY:${GEMINI_API_KEY:}}
