@@ -1,18 +1,18 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
     name: smarthire-backend
   datasource:
-    url: jdbc:h2:file:./data/smarthiredb;DB_CLOSE_DELAY=-1;MODE=MySQL;AUTO_SERVER=TRUE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 
+    url: ${MYSQL_URL:${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/smarthiredb;DB_CLOSE_DELAY=-1;MODE=MySQL;AUTO_SERVER=TRUE}}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    username: ${MYSQL_USER:${SPRING_DATASOURCE_USERNAME:sa}}
+    password: ${MYSQL_PASSWORD:${SPRING_DATASOURCE_PASSWORD:}}
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: ${SPRING_JPA_DATABASE_PLATFORM:org.hibernate.dialect.H2Dialect}
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
     show-sql: false
     properties:
       hibernate:
@@ -30,8 +30,8 @@ spring:
 
 smarthire:
   jwt:
-    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-    expiration-ms: 86400000 # 24 hours
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 hours
   github:
     client-id: ${GITHUB_CLIENT_ID:Ov23liSampleClientId}
     client-secret: ${GITHUB_CLIENT_SECRET:sampleClientSecretKey}
