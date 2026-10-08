@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: smarthire
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX_NAME
+        value: ai-rag-documents
+      - key: PINECONE_ENVIRONMENT
+        value: us-east-1
+      - key: PINECONE_NAMESPACE
+        value: default
+      - key: PINECONE_HOST
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
